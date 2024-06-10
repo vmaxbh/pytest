@@ -24,7 +24,7 @@ jobs:
       # Cria um ambiente virtual para instalar as dependências isoladamente. Isso é uma boa prática para evitar conflitos de dependências.
 
     - name: Activate Virtual Environment
-      run: echo "$$ $HOME/venv/bin/activate" &&. $HOME/venv/bin/activate
+      run: source $HOME/venv/bin/activate
       shell: bash
       # Ativa o ambiente virtual criado. Note que esta etapa é necessária para usar o ambiente virtual nas etapas subsequentes.
 
