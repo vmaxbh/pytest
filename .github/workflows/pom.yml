@@ -10,10 +10,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Check out repository
-      uses: actions/checkout@v2 # Atualizado para a última versão disponível
+      uses: actions/checkout@v2 
 
     - name: Set up Python
-      uses: actions/setup-python@v2 # Atualizado para a última versão disponível
+      uses: actions/setup-python@v2 
       with:
         python-version: '3.8'
 
@@ -44,7 +44,7 @@ jobs:
                 --durations=0 
 
     - name: Upload HTML Report
-      uses: actions/upload-artifact@v4 # Atualizado para a versão 4
+      uses: actions/upload-artifact@v4 
       if: always()
       with:
         name: TestReportsSE-Exemplo_html
