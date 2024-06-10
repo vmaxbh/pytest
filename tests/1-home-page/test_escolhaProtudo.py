@@ -1,8 +1,8 @@
 import pytest
 import time
-from resources.autenticacao import *
+from commands.autenticacao import *
 from selenium.webdriver.common.by import By
-from resources.login_helpers import login
+from commands.login_helpers import login
 
 @pytest.fixture
 def log_in():
