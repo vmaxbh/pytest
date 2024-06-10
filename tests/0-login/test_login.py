@@ -1,10 +1,10 @@
 import pytest
 import time
-from resources.autenticacao import *
+from commands.autenticacao import *
 from selenium.webdriver.chrome.options import Options
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from resources.login_helpers import login
+from commands.login_helpers import login
 
    
 def test_login():
