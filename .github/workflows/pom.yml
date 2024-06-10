@@ -20,12 +20,14 @@ jobs:
     - name: Create Virtual Environment
       run: python -m venv venv
 
+    - name: Copy resources folder
+      run: cp -r../resources./resources
+
     - name: Install Dependencies
       run: |
         python -m pip install --upgrade pip
         pip install pytest selenium pytest-html
         
-
     - name: Esteira de testes e Generate Reports
       run: |
         pytest -v --html=report.html  \
@@ -41,5 +43,4 @@ jobs:
       with:
         name: TestReportsSE-Exemplo_html
         path: report.html
-
     
