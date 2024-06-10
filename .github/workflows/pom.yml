@@ -28,7 +28,7 @@ jobs:
         python -m pip install --upgrade pip
         pip install pytest selenium pytest-html
         
-    - name: Esteira de testes e Generate Reports
+    - name: Execute Tests and Generate Reports
       run: |
         pytest -v --html=report.html  \
                 --self-contained-html \
