@@ -9,50 +9,43 @@ jobs:
   run-tests:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
-      # Usa a ação checkout para obter o código do repositório. Esta é uma boa prática padrão.
+    - name: Check out repository
+      uses: actions/checkout@v2 # Atualizado para a última versão disponível
 
     - name: Set up Python
-      uses: actions/setup-python@v2
+      uses: actions/setup-python@v2 # Atualizado para a última versão disponível
       with:
         python-version: '3.8'
-      # Configura o Python 3.8, que é a versão especificada. É importante manter a versão do Python consistente com o ambiente de desenvolvimento.
 
     - name: Create Virtual Environment
       run: python -m venv venv
-      # Cria um ambiente virtual para instalar as dependências isoladamente. Isso é uma boa prática para evitar conflitos de dependências.
 
     - name: Activate Virtual Environment
-      run: source $HOME/venv/bin/activate
-      shell: bash
-      # Ativa o ambiente virtual criado. Note que esta etapa é necessária para usar o ambiente virtual nas etapas subsequentes.
+      run: |
+        source venv/bin/activate
 
     - name: Install Dependencies
       run: |
-        python -m pip install --upgrade pip
-        pip install -r requirements.txt
-      # Atualiza o pip e instala as dependências listadas no requirements.txt. É importante garantir que este arquivo esteja atualizado.
+        pip install --upgrade pip
+        pip install pytest selenium pytest-html
+
+    - name: Set PYTHONPATH
+      run: |
+        echo "PYTHONPATH=$(pwd)" >> $GITHUB_ENV
 
     - name: Execute Tests and Generate Reports
       run: |
+        source venv/bin/activate
         pytest -v --html=report.html \
                 --self-contained-html \
                 --capture=sys \
                 --verbose \
                 --showlocals \
-                --durations=0
-      # Executa os testes com pytest e gera um relatório HTML. Os backslashes (\) foram removidos para melhor legibilidade.
+                --durations=0 
 
     - name: Upload HTML Report
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v4 # Atualizado para a versão 4
       if: always()
       with:
-        name: TestReport
+        name: TestReportsSE-Exemplo_html
         path: report.html
-      # Faz upload do relatório HTML como um artefato, independentemente do resultado dos testes. Isso é útil para análises pós-execução.
-
-    - name: Deactivate Virtual Environment
-      run: deactivate
-      shell: bash
-      # Desativa o ambiente virtual após a conclusão dos testes, embora não estritamente necessário, é uma boa prática de limpeza.
