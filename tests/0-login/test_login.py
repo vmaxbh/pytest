@@ -10,6 +10,7 @@ from commands.login_helpers import login
 def test_login():
     options = Options()
     options.add_argument("--headless")
+    options.add_argument("--window-size=1920,1080") 
     driver = webdriver.Chrome(options=options)
     driver.maximize_window()
     driver.get("https://www.saucedemo.com/v1/index.html")
