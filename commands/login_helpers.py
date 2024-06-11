@@ -6,7 +6,7 @@ import time
 def login(username, password):
     options = Options()  # Cria uma instância de opções
     options.add_argument("--headless")  # Adiciona a opção headless
-
+    options.add_argument("--window-size=1920,1080") 
     driver = webdriver.Chrome(options=options)#options=options
     driver.maximize_window()
     driver.get("https://www.saucedemo.com/v1/index.html")
