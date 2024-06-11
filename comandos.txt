@@ -1,1 +1,5 @@
 pytest -v --html=report.html
+
+pytest -v tests/1-home-page/test_detaheProduto.py
+
+pytest -v.\tests\1-home-page\test_detalheProduto2.py --html=report.html
