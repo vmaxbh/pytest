@@ -18,7 +18,6 @@ def test_naoPreenchimentocheckout(log_in):
     car = log_in.find_element(By.XPATH, "//*[@fill='currentColor']")
     car.click()
     print('btn Carrinho Clicado com Sucesso!')
-    log_in.get_screenshot_as_file("tests/2-checkout/report/checkout1.png")
     time.sleep(1)
     check = log_in.find_element(By.XPATH, "//*[@class='btn_action checkout_button']")
     check.click()
@@ -36,3 +35,4 @@ def test_naoPreenchimentocheckout(log_in):
         print(f"A mensagem de erro '{expected_error_message}' não está presente na tela ou é diferente da esperada.")
     time.sleep(5)
     print('Teste de não Validação do checkout perante o não preenchimento feito com Sucesso!')
+    log_in.get_screenshot_as_file("tests/2-checkout/report/naoPreenchimentocheckout1.png")
